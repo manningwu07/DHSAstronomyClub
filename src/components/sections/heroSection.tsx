@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import heroJSON from "~/controlContentHere/landingPage/frontPage.json";
 
 interface Hero {

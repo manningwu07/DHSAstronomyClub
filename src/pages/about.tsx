@@ -17,7 +17,7 @@ interface FeatureProps {
 
 const Features: React.FC<FeatureProps> = ({ Icon, title, description }) => {
   return (
-    <Card className="bg-darkPurple border-gold transition-all duration-300 ease-out hover:scale-105 hover:shadow-lg"> 
+    <Card className="border-gold bg-darkPurple transition-all duration-300 ease-out hover:scale-105 hover:shadow-lg">
       <CardContent className="flex flex-col items-center p-6 text-center">
         {/* Make sure you import the icon you need from lucide-react */}
         <Icon className="mb-4 h-12 w-12 text-gold" />
@@ -100,21 +100,21 @@ export default function AboutUsPage() {
           <p className="mx-auto text-center text-lg text-gray-300">
             Founded in 2022 by a group of passionate astronomy students,
             AstroGaels has grown from a small club into a thriving community of
-            space enthusiasts. Over the years, we've organized countless
+            space enthusiasts. Over the years, we&apos;ve organized countless
             stargazing sessions, hosted renowned guest speakers, and even
             contributed to real astronomical research projects. Our commitment
             to spreading the wonder of the cosmos remains as strong as ever.
           </p>
         </div>
 
-        <div className="text-center px-4 md:px-10 lg:px-16 2xl:px-24">
+        <div className="px-4 text-center md:px-10 lg:px-16 2xl:px-24">
           <h2 className="mb-8 text-3xl font-semibold text-white">
             Join AstroGaels Today
           </h2>
           <p className="mx-auto mb-8 text-lg text-gray-300">
-            Whether you're a seasoned astronomer or just starting to explore the
-            night sky, there's a place for you in AstroGaels. Join us in our
-            mission to unravel the mysteries of the universe!
+            Whether you&apos;re a seasoned astronomer or just starting to
+            explore the night sky, there&apos;s a place for you in AstroGaels.
+            Join us in our mission to unravel the mysteries of the universe!
           </p>
           <Button className="bg-gold px-8 py-3 text-lg text-darkPurple hover:bg-gold/80">
             Become a Member

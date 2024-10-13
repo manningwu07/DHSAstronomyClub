@@ -23,7 +23,7 @@ const generateQuadraticKeyframes = (steps: number): string[] => {
   return keyframes;
 };
 
-const AnimatedTestimonials: React.FC = () => {
+const Testimonials: React.FC = () => {
   const [currentTestimonial, setCurrentTestimonial] =
     useState<Testimonial | null>(null);
   const [starIsAnimating, setStarIsAnimating] = useState(false);
@@ -142,4 +142,4 @@ const AnimatedTestimonials: React.FC = () => {
   );
 };
 
-export default AnimatedTestimonials;
+export default Testimonials;

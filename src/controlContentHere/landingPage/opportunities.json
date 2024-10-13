@@ -1,10 +1,10 @@
 {
-  "comment": "**PLEASE READ - FOR IMAGES, PLEASE DROP THE IMAGE IN THE public/oppurtunities",
-  "comment_": "FOLDER AND USE '/oppurtunities/[filename].[type]' AS THE IMAGE URL IN THE JSON FILE**",
+  "comment": "**PLEASE READ - FOR IMAGES, PLEASE DROP THE IMAGE IN THE public/opportunities",
+  "comment_": "FOLDER AND USE '/opportunities/[filename].[type]' AS THE IMAGE URL IN THE JSON FILE**",
 
-  "featured_oppurtunities": [
+  "featured_opportunities": [
     {
-      "imageUrl": "/oppurtunities/test.png",
+      "imageUrl": "/opportunities/test.png",
       "title": "UC Berkeley AstroNight",
       "description": "Connect with UC Berkeley students and explore the night sky. What happens if I keep yapping? What happens if I keep yapping? What happens if I keep yapping? What happens if I keep yapping? What happens if I keep yapping? What happens if I keep yapping? What happens if I keep yapping? What happens if I keep yapping? What happens if I keep yapping? What happens if I keep yapping? What happens if I keep yapping? What happens if I keep yapping? What happens if I keep yapping? What happens if I keep yapping? What happens if I keep yapping? "
     },
@@ -19,7 +19,7 @@
       "description": "Listen to other students nerd out on astronomy and astrophysics together"
     }
   ],
-  "other_oppurtunities": [
+  "other_opportunities": [
     {
       "imageUrl": "/placeholder.svg",
       "title": "Online Courses",

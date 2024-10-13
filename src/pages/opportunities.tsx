@@ -1,10 +1,10 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import OpportunityCard from "src/components/cards/oppurtunityCard";
+import OpportunityCard from "~/components/cards/opportunityCard";
 import Footer from "~/components/footer";
 import Navbar from "~/components/navbar";
 import JoinSection from "~/components/sections/joinSection";
-import oppurtunities from "~/controlContentHere/landingPage/oppurtunities.json";
+import opportunities from "~/controlContentHere/landingPage/opportunities.json";
 
 interface Opportunity {
   imageUrl?: string;
@@ -13,10 +13,10 @@ interface Opportunity {
 }
 
 const featuredOpportunities: Opportunity[] =
-  oppurtunities.featured_oppurtunities.length === 3
-    ? oppurtunities.featured_oppurtunities
-    : oppurtunities.featured_oppurtunities.slice(0, 3);
-const otherOpportunities: Opportunity[] = oppurtunities.other_oppurtunities;
+  opportunities.featured_opportunities.length === 3
+    ? opportunities.featured_opportunities
+    : opportunities.featured_opportunities.slice(0, 3);
+const otherOpportunities: Opportunity[] = opportunities.other_opportunities;
 
 const getMarginClass = (index: number) => {
   switch (index) {
@@ -146,9 +146,7 @@ export default function OpportunitiesPage() {
           imageUrl={otherOpportunities[opportunityIndex]!.imageUrl}
           title={otherOpportunities[opportunityIndex]!.title}
           description={otherOpportunities[opportunityIndex]!.description}
-          className={getMarginClass(
-            3 - j
-          )}
+          className={getMarginClass(3 - j)}
         />,
       );
     }
@@ -156,7 +154,7 @@ export default function OpportunitiesPage() {
     opportunityCards.push(
       <div
         key={`row-${i}`}
-        className="flex flex-col md:flex-row md:items-start md:justify-center gap-8 md:gap-10 lg:gap-12 py-4"
+        className="flex flex-col gap-8 py-4 md:flex-row md:items-start md:justify-center md:gap-10 lg:gap-12"
       >
         {cardsInRow}
       </div>,
@@ -167,7 +165,7 @@ export default function OpportunitiesPage() {
     <div className="relative min-h-screen overflow-hidden bg-darkPurple text-white">
       <Navbar />
 
-      <canvas ref={canvasRef} className="absolute z-0"/>
+      <canvas ref={canvasRef} className="absolute z-0" />
 
       <div className="container relative z-10 mx-auto px-4 py-16">
         <h1 className="mb-16 text-center text-4xl font-bold text-gold md:text-5xl lg:text-6xl">
@@ -178,7 +176,7 @@ export default function OpportunitiesPage() {
           <h2 className="mb-8 flex justify-center text-3xl font-semibold text-white md:text-4xl">
             Featured Opportunities
           </h2>
-          <div className="flex flex-col md:flex-row md:items-start md:justify-center gap-8 md:gap-10 lg:gap-12">
+          <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-center md:gap-10 lg:gap-12">
             {featuredOpportunities.map((opportunity, index) => (
               <OpportunityCard
                 key={index}

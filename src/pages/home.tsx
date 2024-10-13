@@ -1,14 +1,18 @@
-import Navbar from "~/components/navbar";
 import Footer from "~/components/footer";
-import TestimonialsSection from "~/components/sections/testimonialsSection";
+import Navbar from "~/components/navbar";
 import HeroSection from "~/components/sections/heroSection";
-import TheTeam from "~/components/sections/theTeam";
-import OppurtunitiesSection from "~/components/sections/oppurtunitiesSection";
 import JoinSection from "~/components/sections/joinSection";
+import OpportunitiesSection from "~/components/sections/OpportunitiesSection";
+//@ts-ignore
+import Testimonials from "~/components/sections/TestimonialsSection";
+//@ts-ignore
+import TheTeam from "~/components/sections/TheTeam";
+
+
 
 export default function LandingPage() {
   return (
-    <div className="bg-purple min-h-screen text-white">
+    <div className="min-h-screen bg-purple text-white">
       <Navbar />
 
       <main>
@@ -16,19 +20,19 @@ export default function LandingPage() {
           <HeroSection />
         </section>
 
-        <section className="relative py-20 bg-gradient-to-b from-darkPurple to-purple">
-          <OppurtunitiesSection />
+        <section className="relative bg-gradient-to-b from-darkPurple to-purple py-20">
+          <OpportunitiesSection />
         </section>
 
         <section>
-          <TestimonialsSection />
+          <Testimonials />
         </section>
 
-        <section className="pb-16 bg-purple">
+        <section className="bg-purple pb-16">
           <TheTeam />
         </section>
 
-        <section className="bg-gradient-to-b from-purple to-darkPurple py-16"> 
+        <section className="bg-gradient-to-b from-purple to-darkPurple py-16">
           <JoinSection />
         </section>
       </main>

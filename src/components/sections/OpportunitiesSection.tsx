@@ -1,19 +1,17 @@
 import React, { useEffect, useRef } from "react";
-import { GraduationCap, Users, BookOpen } from "lucide-react";
-// In oppurtunities.json, make sure to import the icons you need from lucide-react here
 
-import oppurtunitiesJSON from "~/controlContentHere/landingPage/oppurtunities.json";
-import OppurtunityCard from "../cards/oppurtunityCard";
-
-interface oppurtunity {
+import opportunitiesJSON from "~/controlContentHere/landingPage/opportunities.json";
+import OpportunityCard from "../cards/opportunityCard";
+ 
+interface Opportunity {
   imageUrl?: string;
   title: string;
   description: string;
 }
 
-const oppurtunities: oppurtunity[] = oppurtunitiesJSON.featured_oppurtunities;
+const opportunities: Opportunity[] = opportunitiesJSON.featured_opportunities;
 
-const oppurtunitiesSection: React.FC = () => {
+const opportunitiesSection: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -132,7 +130,7 @@ const oppurtunitiesSection: React.FC = () => {
           </filter>
         </defs>
 
-        {/* Constellation lines connecting the oppurtunity cards */}
+        {/* Constellation lines connecting the opportunity cards */}
         <path
           d="M500,200 L250,600 L750,600 Z"
           fill="none"
@@ -165,22 +163,22 @@ const oppurtunitiesSection: React.FC = () => {
       </svg>
 
       <div className="relative flex flex-col items-center justify-center gap-12 md:flex-row md:items-start md:gap-2 md:px-5 lg:gap-5 lg:px-10">
-        <OppurtunityCard
+        <OpportunityCard
           imageUrl="/placeholder.svg"
-          title={oppurtunities[0]!.title}
-          description={oppurtunities[0]!.description}
+          title={opportunities[0]!.title}
+          description={opportunities[0]!.description}
           className="md:mt-96 lg:mt-[500px] 2xl:mt-[650px]"
         />
-        <OppurtunityCard
+        <OpportunityCard
           imageUrl="/placeholder.svg"
-          title={oppurtunities[1]!.title}
-          description={oppurtunities[1]!.description}
+          title={opportunities[1]!.title}
+          description={opportunities[1]!.description}
           className="z-10"
         />
-        <OppurtunityCard
+        <OpportunityCard
           imageUrl="/placeholder.svg"
-          title={oppurtunities[2]!.title}
-          description={oppurtunities[2]!.description}
+          title={opportunities[2]!.title}
+          description={opportunities[2]!.description}
           className="md:mt-96 lg:mt-[500px] 2xl:mt-[650px]"
         />
       </div>
@@ -188,4 +186,4 @@ const oppurtunitiesSection: React.FC = () => {
   );
 };
 
-export default oppurtunitiesSection;
+export default opportunitiesSection;

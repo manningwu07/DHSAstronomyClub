@@ -8,13 +8,13 @@
         "name": "Ethan C.",
         "position": "Co-Founder",
         "introduction": "Ethan is a high school student who is passionate about astronomy and astrophysics. He is always looking for new ways to learn and explore the universe. Ethan is a dedicated student who is committed to making a positive impact on the world through his passion for astronomy.",
-        "imageUrl": "/teamMembers/test.jpg"
+        "imageUrl": "/placeholder.svg"
       },
       {
         "name": "Suraj K.",
         "position": "Co-Founder",
         "introduction": "Suraj is a high school student who is passionate about astronomy and astrophysics. He is always looking for new ways to learn and explore the universe. Suraj is a dedicated student who is committed to making a positive impact on the world through his passion for astronomy.",
-        "imageUrl": "/teamMembers/test.webp"  
+        "imageUrl": "/placeholder.svg"  
       }
     ]
   }
