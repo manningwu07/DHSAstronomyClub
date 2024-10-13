@@ -7,7 +7,7 @@ import { Button } from "~/components/ui/button";
 import { Telescope, Users, GraduationCap, Calendar } from "lucide-react";
 import Navbar from "~/components/navbar";
 import Footer from "~/components/footer";
-import TheTeam from "~/components/sections/theTeam";
+import TheTeam from "~/components/sections/TheTeam";
 
 interface FeatureProps {
   Icon: React.FC<React.SVGProps<SVGSVGElement>>;

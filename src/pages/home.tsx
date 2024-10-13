@@ -1,11 +1,9 @@
 import Footer from "~/components/footer";
 import Navbar from "~/components/navbar";
-import HeroSection from "~/components/sections/heroSection";
-import JoinSection from "~/components/sections/joinSection";
+import HeroSection from "~/components/sections/HeroSection";
+import JoinSection from "~/components/sections/JoinSection";
 import OpportunitiesSection from "~/components/sections/OpportunitiesSection";
-//@ts-ignore
 import Testimonials from "~/components/sections/TestimonialsSection";
-//@ts-ignore
 import TheTeam from "~/components/sections/TheTeam";
 
 

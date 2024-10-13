@@ -11,7 +11,7 @@ interface Opportunity {
 
 const opportunities: Opportunity[] = opportunitiesJSON.featured_opportunities;
 
-const opportunitiesSection: React.FC = () => {
+const OpportunitiesSection: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -186,4 +186,4 @@ const opportunitiesSection: React.FC = () => {
   );
 };
 
-export default opportunitiesSection;
+export default OpportunitiesSection;
