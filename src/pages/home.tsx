@@ -1,6 +1,6 @@
 import Footer from "~/components/footer";
 import Navbar from "~/components/navbar";
-import HeroSection from "~/components/sections/HeroSection";
+import HeroSection from "~/components/sections/HeroSectionX";
 import JoinSection from "~/components/sections/JoinSection";
 import OpportunitiesSection from "~/components/sections/OpportunitiesSection";
 import Testimonials from "~/components/sections/TestimonialsSection";
