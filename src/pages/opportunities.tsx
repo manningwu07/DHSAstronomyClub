@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import OpportunityCard from "~/components/cards/opportunityCard";
 import Footer from "~/components/footer";
 import Navbar from "~/components/navbar";
-import JoinSection from "~/components/sections/JoinSection";
+import JoinSection from "~/components/sections/JoinSectionX";
 import opportunities from "~/controlContentHere/landingPage/opportunities.json";
 
 interface Opportunity {

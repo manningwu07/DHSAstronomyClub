@@ -1,12 +1,10 @@
 import Footer from "~/components/footer";
 import Navbar from "~/components/navbar";
 import HeroSection from "~/components/sections/HeroSection";
-import JoinSection from "~/components/sections/JoinSection";
-import OpportunitiesSection from "~/components/sections/OpportunitiesSection";
-import Testimonials from "~/components/sections/TestimonialsSection";
-import TheTeam from "~/components/sections/TheTeam";
-
-
+import JoinSection from "~/components/sections/JoinSectionX";
+import OpportunitiesSection from "~/components/sections/OpportunitiesSectionX";
+import Testimonials from "~/components/sections/TestimonialsSectionX";
+import TheTeam from "~/components/sections/TheTeamX";
 
 export default function LandingPage() {
   return (
