@@ -1,5 +1,6 @@
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
+import Link from "next/link";
 
 export default function JoinSection() {
   return (
@@ -8,12 +9,13 @@ export default function JoinSection() {
       <p className="mb-8 text-xl">
         Embark on your astronomy journey with AstroGaels today!
       </p>
-      <form className="mx-auto max-w-md">
-        <Input type="email" placeholder="Enter your email" className="mb-4" />
-        <Button className="w-full bg-gold text-darkPurple hover:bg-gold/90">
-          Sign Up Now
-        </Button>
-      </form>
+      <div className="mx-auto max-w-md px-6">
+        <Link href="https://forms.gle/4inuefrN1Nvyrw4z5" target="_blank">
+          <Button className="w-full bg-gold text-darkPurple hover:bg-gold/90">
+            Sign Up Now
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 }

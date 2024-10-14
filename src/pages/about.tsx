@@ -8,6 +8,7 @@ import { Telescope, Users, GraduationCap, Calendar } from "lucide-react";
 import Navbar from "~/components/navbar";
 import Footer from "~/components/footer";
 import TheTeam from "~/components/sections/TheTeam";
+import Link from "next/link";
 
 interface FeatureProps {
   Icon: React.FC<React.SVGProps<SVGSVGElement>>;
@@ -57,9 +58,13 @@ export default function AboutUsPage() {
               space exploration among students. We aim to provide a platform for
               learning, discovery, and collaboration in the field of astronomy.
             </p>
-            <Button className="bg-gold text-darkPurple hover:bg-gold/80">
+            <Link
+              href="https://forms.gle/4inuefrN1Nvyrw4z5"
+              target="_blank"
+              className="rounded-2xl bg-gold px-5 py-1.5 text-darkPurple hover:bg-gold/80"
+            >
               Join Us
-            </Button>
+            </Link>
           </div>
         </div>
 
@@ -116,9 +121,11 @@ export default function AboutUsPage() {
             explore the night sky, there&apos;s a place for you in AstroGaels.
             Join us in our mission to unravel the mysteries of the universe!
           </p>
-          <Button className="bg-gold px-8 py-3 text-lg text-darkPurple hover:bg-gold/80">
-            Become a Member
-          </Button>
+          <Link href="https://forms.gle/4inuefrN1Nvyrw4z5" target="_blank">
+            <Button className="bg-gold px-8 py-3 text-lg text-darkPurple hover:bg-gold/80">
+              Become a Member
+            </Button>
+          </Link>
         </div>
       </div>
 

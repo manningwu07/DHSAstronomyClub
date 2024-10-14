@@ -1,4 +1,5 @@
-import React from 'react';
+import Link from "next/link"; 
+import React from "react";
 import heroJSON from "~/controlContentHere/landingPage/frontPage.json";
 
 interface Hero {
@@ -10,29 +11,28 @@ interface Hero {
 const hero: Hero = heroJSON.frontpage;
 
 const HeroSection = () => {
-
   return (
-    <div className="relative h-screen bg-darkPurple overflow-hidden">
+    <div className="relative h-screen overflow-hidden bg-darkPurple">
       {/* Parallax Star Layers */}
+      <div className={`parallax-stars parallax-layer absolute inset-0`}></div>
       <div
-        className={`absolute inset-0 parallax-stars parallax-layer`}
-      ></div>
-      <div
-        className={`absolute inset-0 parallax-stars parallax-layer`}
+        className={`parallax-stars parallax-layer absolute inset-0`}
         style={{ opacity: 0.8 }}
       ></div>
 
       {/* Hero content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center">
-        <h1 className="text-white text-5xl lg:text-6xl font-bold px-4">
+      <div className="relative z-10 flex h-full flex-col items-center justify-center text-center">
+        <h1 className="px-4 text-5xl font-bold text-white lg:text-6xl">
           {hero.title}
         </h1>
-        <p className="text-gold mt-4 text-xl lg:text-2xl px-4">
+        <p className="mt-4 px-4 text-xl text-gold lg:text-2xl">
           {hero.subtitle}
         </p>
-        <button className="mt-8 bg-gold text-darkPurple py-3 px-6 font-semibold rounded-lg transition-transform duration-300 transform hover:scale-105">
-          {hero.buttonText}
-        </button>
+        <Link href="https://forms.gle/4inuefrN1Nvyrw4z5" target="_blank">
+          <button className="mt-8 transform rounded-lg bg-gold px-6 py-3 font-semibold text-darkPurple transition-transform duration-300 hover:scale-105">
+            {hero.buttonText}
+          </button>
+        </Link>
       </div>
     </div>
   );
