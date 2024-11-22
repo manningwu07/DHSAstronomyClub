@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star } from "lucide-react";
-import ShootingStarTrail from "../ui/shootingStarTrail";
 import TestimonialCard from "../cards/testimonialCard";
-import testimonialsJSON from "~/controlContentHere/landingPage/testimonials.json";
+import ShootingStarTrail from "../ui/shootingStarTrail";
 
 interface Testimonial {
   id: number;
   quote: string;
   author: string;
 }
-
-const testimonials: Testimonial[] = testimonialsJSON.testimonials;
 
 const generateQuadraticKeyframes = (steps: number): string[] => {
   const keyframes = [];
@@ -23,7 +20,7 @@ const generateQuadraticKeyframes = (steps: number): string[] => {
   return keyframes;
 };
 
-const Testimonials: React.FC = () => {
+const Testimonials = ({ testimonials }: { testimonials: Testimonial[] }) => {
   const [currentTestimonial, setCurrentTestimonial] =
     useState<Testimonial | null>(null);
   const [starIsAnimating, setStarIsAnimating] = useState(false);

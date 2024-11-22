@@ -1,22 +1,17 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { set } from "zod";
 import OpportunityCard from "~/components/cards/opportunityCard";
 import Footer from "~/components/footer";
 import Navbar from "~/components/navbar";
 import JoinSection from "~/components/sections/JoinSection";
-import opportunities from "~/controlContentHere/landingPage/opportunities.json";
+import { PageProps, usePullContent } from "~/utils/pageUtils";
 
 interface Opportunity {
-  imageUrl?: string;
+  imageSrc: string;
   title: string;
   description: string;
 }
-
-const featuredOpportunities: Opportunity[] =
-  opportunities.featured_opportunities.length === 3
-    ? opportunities.featured_opportunities
-    : opportunities.featured_opportunities.slice(0, 3);
-const otherOpportunities: Opportunity[] = opportunities.other_opportunities;
 
 const getMarginClass = (index: number) => {
   switch (index) {
@@ -33,9 +28,21 @@ const getMarginClass = (index: number) => {
   }
 };
 
-export default function OpportunitiesPage() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+export default function OpportunitiesPage({
+  adminContent,
+  adminError,
+}: PageProps) {
+  const pullContent = usePullContent(); // Unconditionally call the hook
 
+  const content = adminContent ?? pullContent.content;
+  const error = adminError ?? pullContent.error;
+
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [featuredOpportunities, setFeaturedOpportunities] = useState<Opportunity[]>([]);
+  const [otherOpportunities, setOtherOpportunities] = useState<Opportunity[]>([]);
+  const [opportunities, setOpportunities] = useState<React.JSX.Element[]>([]);
+
+  // Draw canvas in background
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -129,35 +136,71 @@ export default function OpportunitiesPage() {
     };
   }, []);
 
-  const rows = Math.ceil(otherOpportunities.length / 3);
-  const opportunityCards = [];
+  useEffect(() => {
+    if (!otherOpportunities || !featuredOpportunities) return;
+    const rows = Math.ceil(otherOpportunities.length / 3);
+    const opportunityCards = [];
 
-  for (let i = 0; i < rows; i++) {
-    const cardsInRow = [];
+    for (let i = 0; i < rows; i++) {
+      const cardsInRow = [];
 
-    for (let j = 0; j < 3; j++) {
-      const opportunityIndex = i * 3 + j;
-      if (opportunityIndex >= otherOpportunities.length) break;
+      for (let j = 0; j < 3; j++) {
+        const opportunityIndex = i * 3 + j;
+        if (opportunityIndex >= otherOpportunities.length) break;
 
-      // Non-null assertions because guard clause above
-      cardsInRow.push(
-        <OpportunityCard
-          key={opportunityIndex}
-          imageUrl={otherOpportunities[opportunityIndex]!.imageUrl}
-          title={otherOpportunities[opportunityIndex]!.title}
-          description={otherOpportunities[opportunityIndex]!.description}
-          className={getMarginClass(3 - j)}
-        />,
+        // Non-null assertions because guard clause above
+        cardsInRow.push(
+          <OpportunityCard
+            key={opportunityIndex}
+            imageUrl={otherOpportunities[opportunityIndex]!.imageSrc}
+            title={otherOpportunities[opportunityIndex]!.title}
+            description={otherOpportunities[opportunityIndex]!.description}
+            className={getMarginClass(3 - j)}
+          />,
+        );
+      }
+
+      opportunityCards.push(
+        <div
+          key={`row-${i}`}
+          className="flex flex-col gap-8 py-4 md:flex-row md:items-start md:justify-center md:gap-10 lg:gap-12"
+        >
+          {cardsInRow}
+        </div>,
       );
     }
+    setOpportunities(opportunityCards);
+  }, [otherOpportunities]);
 
-    opportunityCards.push(
-      <div
-        key={`row-${i}`}
-        className="flex flex-col gap-8 py-4 md:flex-row md:items-start md:justify-center md:gap-10 lg:gap-12"
-      >
-        {cardsInRow}
-      </div>,
+  useEffect(() => {
+    if (!content) return;
+    const opportunities = content.global.opportunities;
+
+    setFeaturedOpportunities(opportunities.featured.length === 3
+      ? opportunities.featured
+      : opportunities.featured.slice(0, 3));
+    setOtherOpportunities(opportunities.other);
+  }, [content]);
+
+  if (error) {
+    // Display a fallback error message if Firestore fetch fails
+    return (
+      <div className="error-container">
+        <h1>Service Unavailable</h1>
+        <p>
+          We&apos;re experiencing issues retrieving content. Please try again
+          later.
+        </p>
+      </div>
+    );
+  }
+
+  if (!content) {
+    // Loading indicator while content is being fetched
+    return (
+      <div className="flex items-center justify-center text-3xl">
+        Loading...
+      </div>
     );
   }
 
@@ -180,7 +223,7 @@ export default function OpportunitiesPage() {
             {featuredOpportunities.map((opportunity, index) => (
               <OpportunityCard
                 key={index}
-                imageUrl={opportunity.imageUrl}
+                imageUrl={opportunity.imageSrc}
                 title={opportunity.title}
                 description={opportunity.description}
                 className={getMarginClass(index)}
@@ -193,7 +236,7 @@ export default function OpportunitiesPage() {
           <h2 className="flex justify-center text-3xl font-semibold text-white md:text-4xl">
             Other Opportunities
           </h2>
-          {opportunityCards}
+          {opportunities}
         </div>
 
         <div className="mt-16 text-center">

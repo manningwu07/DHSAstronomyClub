@@ -9,6 +9,7 @@ import Navbar from "~/components/navbar";
 import Footer from "~/components/footer";
 import TheTeam from "~/components/sections/TheTeam";
 import Link from "next/link";
+import { PageProps, usePullContent } from "~/utils/pageUtils";
 
 interface FeatureProps {
   Icon: React.FC<React.SVGProps<SVGSVGElement>>;
@@ -29,14 +30,41 @@ const Features: React.FC<FeatureProps> = ({ Icon, title, description }) => {
   );
 };
 
-export default function AboutUsPage() {
+export default function AboutUsPage({ adminContent, adminError }: PageProps) {
+  const pullContent = usePullContent(); // Unconditionally call the hook
+
+  const content = adminContent ?? pullContent.content;
+  const error = adminError ?? pullContent.error;
+
+  if (error) {
+    // Display a fallback error message if Firestore fetch fails
+    return (
+      <div className="error-container">
+        <h1>Service Unavailable</h1>
+        <p>
+          We&apos;re experiencing issues retrieving content. Please try again
+          later.
+        </p>
+      </div>
+    );
+  }
+
+  if (!content) {
+    // Loading indicator while content is being fetched
+    return (
+      <div className="flex items-center justify-center text-3xl">
+        Loading...
+      </div>
+    );
+  }
+  
   return (
     <div className="relative min-h-screen overflow-hidden bg-purple text-white">
       <Navbar />
 
       <div className="container relative z-10 mx-auto px-4 py-16">
         <h1 className="mb-16 text-center text-4xl font-bold text-gold md:text-5xl lg:text-6xl">
-          About AstroGaels
+          {content.about.heading}
         </h1>
 
         <div className="mb-16 grid grid-cols-1 gap-8 md:grid-cols-2">
@@ -51,12 +79,10 @@ export default function AboutUsPage() {
           </div>
           <div className="flex flex-col items-center justify-center">
             <h2 className="mb-4 text-3xl font-semibold text-white">
-              Our Mission
+              {content.about.mission.heading}
             </h2>
             <p className="mb-6 text-lg text-gray-300">
-              AstroGaels is dedicated to fostering a passion for astronomy and
-              space exploration among students. We aim to provide a platform for
-              learning, discovery, and collaboration in the field of astronomy.
+              {content.about.mission.description}
             </p>
             <Link
               href="https://forms.gle/4inuefrN1Nvyrw4z5"
@@ -68,7 +94,7 @@ export default function AboutUsPage() {
           </div>
         </div>
 
-        <TheTeam />
+        <TheTeam teamMembers = {content.global.theTeam}/>
 
         <br></br>
         <br></br>
@@ -100,30 +126,23 @@ export default function AboutUsPage() {
 
         <div className="mb-16 px-4 md:px-10 lg:px-16 2xl:px-24">
           <h2 className="mb-8 text-center text-3xl font-semibold text-white">
-            Our History
+            {content.about.history.heading}
           </h2>
           <p className="mx-auto text-center text-lg text-gray-300">
-            Founded in 2022 by a group of passionate astronomy students,
-            AstroGaels has grown from a small club into a thriving community of
-            space enthusiasts. Over the years, we&apos;ve organized countless
-            stargazing sessions, hosted renowned guest speakers, and even
-            contributed to real astronomical research projects. Our commitment
-            to spreading the wonder of the cosmos remains as strong as ever.
+            {content.about.history.description}
           </p>
         </div>
 
         <div className="px-4 text-center md:px-10 lg:px-16 2xl:px-24">
           <h2 className="mb-8 text-3xl font-semibold text-white">
-            Join AstroGaels Today
+            {content.about.join.heading}
           </h2>
           <p className="mx-auto mb-8 text-lg text-gray-300">
-            Whether you&apos;re a seasoned astronomer or just starting to
-            explore the night sky, there&apos;s a place for you in AstroGaels.
-            Join us in our mission to unravel the mysteries of the universe!
+            {content.about.join.description}
           </p>
-          <Link href="https://forms.gle/4inuefrN1Nvyrw4z5" target="_blank">
+          <Link href={content.about.join.buttonLink} target="_blank">
             <Button className="bg-gold px-8 py-3 text-lg text-darkPurple hover:bg-gold/80">
-              Become a Member
+              {content.about.join.buttonText}
             </Button>
           </Link>
         </div>

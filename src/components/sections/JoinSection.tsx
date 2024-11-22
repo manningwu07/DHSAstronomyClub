@@ -1,5 +1,4 @@
 import { Button } from "../ui/button";
-import { Input } from "../ui/input";
 import Link from "next/link";
 
 export default function JoinSection() {

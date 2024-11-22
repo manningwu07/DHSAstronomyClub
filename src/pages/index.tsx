@@ -1,5 +1,5 @@
 import Head from "next/head";
-import LandingPage from "./home";
+import LandingPage from "./LandingPage";
 
 export default function Home() {
   return (
@@ -26,16 +26,14 @@ export default function Home() {
           content="Dublin High School Astronomy Club"
         />
         <meta name="twitter:image" content="/logo.jpg" />
-        
+
         {/* Google Site Verification --- publishes the site to Google Search */}
         <meta
           name="google-site-verification"
           content="A6YrIHHiVDJIA8O5_fVIFMNVm8W7lxnVZd6TYIy5w4Q"
         />
       </Head>
-      <body>
-        <LandingPage />
-      </body>
+      <LandingPage />
     </>
   );
 }

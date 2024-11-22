@@ -5,15 +5,15 @@ interface TeamMemberProps {
   name: string
   position: string
   introduction: string
-  imageUrl: string
+  imageSrc: string
 }
 
-export default function TeamMemberCard({ name, position, introduction, imageUrl }: TeamMemberProps) {
+export default function TeamMemberCard({ name, position, introduction, imageSrc }: TeamMemberProps) {
   return (
     <Card className="bg-darkPurple text-white overflow-hidden transition-all duration-300 ease-out hover:scale-105 hover:shadow-lg">
       <div className="relative h-64 w-full">
         <Image
-          src={imageUrl}
+          src={imageSrc}
           alt={`${name} - ${position}`}
           layout="fill"
           className="object-contain pt-4 px-2 max-h-72"

@@ -1,17 +1,8 @@
 import React, { useEffect, useRef } from "react";
-
-import opportunitiesJSON from "~/controlContentHere/landingPage/opportunities.json";
 import OpportunityCard from "../cards/opportunityCard";
+import { DataStructure } from "~/utils/dataStructure";
  
-interface Opportunity {
-  imageUrl?: string;
-  title: string;
-  description: string;
-}
-
-const opportunities: Opportunity[] = opportunitiesJSON.featured_opportunities;
-
-const OpportunitiesSection: React.FC = () => {
+const OpportunitiesSection = ({opportunities}: {opportunities: DataStructure["global"]["opportunities"]["featured"]}) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {

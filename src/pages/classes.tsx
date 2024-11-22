@@ -7,56 +7,92 @@ import { Search } from "lucide-react";
 import ClassCard from "~/components/cards/classCard";
 import Navbar from "~/components/navbar";
 import Footer from "~/components/footer";
-import lecturesJSON from "~/controlContentHere/lectures/lectures.json";
-
+import { PageProps, usePullContent } from "~/utils/pageUtils";
 
 interface Lecture {
-    id: number;
-    title: string;
-    description: string;
-    date: string;
-    slidesUrl: string;
-    videoUrl: string;
-    category: string;
-  }
+  id: number;
+  title: string;
+  description: string;
+  date: string;
+  slidesUrl: string;
+  videoUrl: string;
+  category: string;
+}
 
-const categories: string[] = lecturesJSON.categories;   
-const lectures: Lecture[] = lecturesJSON.lectures;
+export default function LecturePage({ adminContent, adminError }: PageProps) {
+  const pullContent = usePullContent(); // Unconditionally call the hook
 
-export default function LecturePage() {
+  const content = adminContent ?? pullContent.content;
+  const error = adminError ?? pullContent.error;
+
+  const [categories, setCategories] = useState<string[] | null>(null);
+  const [lectures, setLectures] = useState<Lecture[] | null>(null);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [filteredLectures, setFilteredLectures] = useState<Lecture[]>(lectures);
+  const [filteredLectures, setFilteredLectures] = useState<Lecture[] | null>(null);
 
   useEffect(() => {
+    if (!content) return;
+
+    console.log("Content recieved");
+    setCategories(content.classes.categories);
+    setLectures(content.classes.classes);
+  }, [content]);
+
+  useEffect(() => {
+    if(!lectures) return;
     const filterLectures = () => {
       return lectures.filter((lecture) => {
         const lowerCaseSearchTerm = searchTerm.toLowerCase();
 
         const dateObj = new Date(lecture.date);
         const year = dateObj.getFullYear().toString();
-        const month = dateObj.toLocaleString('en-US', { month: 'long' }).toLowerCase();
+        const month = dateObj
+          .toLocaleString("en-US", { month: "long" })
+          .toLowerCase();
         const day = dateObj.getDate().toString();
-  
+
         const matchesText =
           lecture.title.toLowerCase().includes(lowerCaseSearchTerm) ||
           lecture.description.toLowerCase().includes(lowerCaseSearchTerm);
-  
+
         const matchesDate =
           year.includes(lowerCaseSearchTerm) ||
           month.includes(lowerCaseSearchTerm) ||
           day.includes(lowerCaseSearchTerm);
-  
+
         const matchesCategory =
           selectedCategory === "All" || lecture.category === selectedCategory;
-  
+
         return (matchesText || matchesDate) && matchesCategory;
       });
     };
-  
+
     setFilteredLectures(filterLectures());
-  }, [searchTerm, selectedCategory]);
-  
+  }, [lectures, searchTerm, selectedCategory]);
+
+  if (error) {
+    // Display a fallback error message if Firestore fetch fails
+    return (
+      <div className="error-container">
+        <h1>Service Unavailable</h1>
+        <p>
+          We&apos;re experiencing issues retrieving content. Please try again
+          later.
+        </p>
+      </div>
+    );
+  }
+
+  if (!content || !filteredLectures || !categories) {
+    // Loading indicator while content is being fetched
+    return (
+      <div className="flex items-center justify-center text-3xl">
+        Loading...
+      </div>
+    );
+  }
 
   return (
     <>
@@ -73,7 +109,7 @@ export default function LecturePage() {
               placeholder="Search lectures..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="bg-purple border-gold pl-10 text-white z-10"
+              className="z-10 border-gold bg-purple pl-10 text-white"
             />
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 transform text-gold" />
           </div>

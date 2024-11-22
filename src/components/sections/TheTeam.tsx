@@ -1,16 +1,13 @@
 import TeamMemberCard from "../cards/theTeamCard";
-import teamMembersJSON from "~/controlContentHere/landingPage/teamMembers.json";
 
 interface TeamMember {
   name: string
   position: string
   introduction: string
-  imageUrl: string
+  imageSrc: string
 }
 
-const teamMembers: TeamMember[] = teamMembersJSON.teamMembers;
-
-export default function TheTeam() {
+export default function TheTeam({ teamMembers }: { teamMembers: TeamMember[] }) {
   return (
     <div className="mx-auto px-4 md:px-8 lg:px-12 container"> 
       <h2 className="mb-12 text-center text-3xl font-bold text-white">
