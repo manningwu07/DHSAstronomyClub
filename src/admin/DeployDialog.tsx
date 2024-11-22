@@ -38,6 +38,7 @@ export function DeployDialog({ isOpen, setIsOpen, isDeploying, setIsDeploying, d
             landing: data.landing,
             about: data.about,
             classes: data.classes,
+            opportunities: data.opportunities,
           },
           { merge: true },
         );

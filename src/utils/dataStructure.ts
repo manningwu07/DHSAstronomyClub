@@ -74,7 +74,9 @@ export interface DataStructure {
     };
   };
   classes: {
-    categories: string[];
+    categories: {
+      paragraph: string;      
+    }[];
     classes: {
       id: number;
       title: string;
@@ -85,4 +87,5 @@ export interface DataStructure {
       category: string;
     }[];
   };
+  opportunities: string;
 };

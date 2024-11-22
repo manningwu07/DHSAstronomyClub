@@ -124,7 +124,16 @@
       }
     },
     "classes": {
-      "categories": ["All", "Astronomy", "Astrophysics"],
+      "categories": [
+        {
+          "paragraph": "All"
+        }, 
+        {
+          "paragraph": "Astronomy"
+        },
+        {
+          "paragraph": "Astrophysics"
+        }],
       "classes": [
         {
           "id": 1,
@@ -145,6 +154,7 @@
           "category": "Astrophysics"
         }
       ]
-    }
+    },
+    "opportunities": "Owners note: Go to Components, then Opportunities to edit this page"
   }
   

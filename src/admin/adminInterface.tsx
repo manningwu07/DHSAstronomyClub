@@ -98,7 +98,7 @@ export default function AdminInterface() {
           <div className="space-y-8 p-8">
             <ScrollArea className="w-full">
               <div className="flex flex-wrap pb-4">
-                {["landing", "aeroAdvantage", "students", "parents"].map(
+                {["landing", "about", "oppurtunities", "classes"].map(
                   (
                     page, // Change this to page names
                   ) => (
@@ -120,7 +120,7 @@ export default function AdminInterface() {
                 data[activePage as keyof typeof data],
                 handleEdit,
               )}
-            {renderEditField("components", data.components, handleEdit)}
+            {renderEditField("components", data.global, handleEdit)}
           </div>
         </ScrollArea>
 

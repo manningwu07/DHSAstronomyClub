@@ -19,13 +19,13 @@ interface Lecture {
   category: string;
 }
 
-export default function LecturePage({ adminContent, adminError }: PageProps) {
+export default function ClassesPage({ adminContent, adminError }: PageProps) {
   const pullContent = usePullContent(); // Unconditionally call the hook
 
   const content = adminContent ?? pullContent.content;
   const error = adminError ?? pullContent.error;
 
-  const [categories, setCategories] = useState<string[] | null>(null);
+  const [categories, setCategories] = useState<{paragraph:string}[] | null>(null);
   const [lectures, setLectures] = useState<Lecture[] | null>(null);
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -116,12 +116,12 @@ export default function LecturePage({ adminContent, adminError }: PageProps) {
           <div className="flex flex-wrap justify-center gap-2">
             {categories.map((category) => (
               <Button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                variant={selectedCategory === category ? "default" : "outline"}
-                className={`${selectedCategory === category ? "bg-gold text-darkPurple" : "border-gold text-gold"} hover:bg-gold hover:text-darkPurple`}
+                key={category.paragraph}
+                onClick={() => setSelectedCategory(category.paragraph)}
+                variant={selectedCategory === category.paragraph ? "default" : "outline"}
+                className={`${selectedCategory === category.paragraph ? "bg-gold text-darkPurple" : "border-gold text-gold"} hover:bg-gold hover:text-darkPurple`}
               >
-                {category}
+                {category.paragraph}
               </Button>
             ))}
           </div>

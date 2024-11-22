@@ -1,8 +1,8 @@
 import { ScrollArea } from "~/components/ui/scroll-area";
-import AeroAdvantage from "~/pages/AeroAdvantage";
+import AboutUsPage from "~/pages/about";
+import ClassesPage from "~/pages/classes";
 import LandingPage from "~/pages/LandingPage";
-import ParentsPage from "~/pages/parents";
-import StudentsPage from "~/pages/students";
+import OpportunitiesPage from "~/pages/opportunities";
 import type { DataStructure } from "~/utils/dataStructure";
 
 interface PreviewPaneProps {
@@ -17,17 +17,17 @@ export function PreviewPane({data, activePage, width }: PreviewPaneProps) {
     switch (activePage) {
       case "landing":
         return <LandingPage adminContent={data}/>;
-      case "aeroAdvantage":
+      case "about":
         return (
-          <AeroAdvantage adminContent={data}/>
+          <AboutUsPage adminContent={data}/>
         );
-      case "students":
+      case "classes":
         return (
-          <StudentsPage adminContent={data}/>
+          <ClassesPage adminContent={data}/>
         );
-      case "parents":
+      case "oppurtunities":
         return (
-          <ParentsPage adminContent={data}/>
+          <OpportunitiesPage adminContent={data}/>
         );
       default:
         return (
