@@ -1,6 +1,6 @@
 import Link from "next/link"; 
 import React from "react";
-import { DataStructure } from "~/utils/dataStructure";
+import { type DataStructure } from "~/utils/dataStructure";
 
 const HeroSection = ({ title, subtitle, buttonText }: DataStructure["landing"]["hero"]) => {
   return (

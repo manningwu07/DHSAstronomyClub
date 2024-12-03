@@ -9,7 +9,7 @@ import Navbar from "~/components/navbar";
 import Footer from "~/components/footer";
 import TheTeam from "~/components/sections/TheTeam";
 import Link from "next/link";
-import { PageProps, usePullContent } from "~/utils/pageUtils";
+import { type PageProps, usePullContent } from "~/utils/pageUtils";
 
 interface FeatureProps {
   Icon: React.FC<React.SVGProps<SVGSVGElement>>;

@@ -7,7 +7,7 @@ import { Search } from "lucide-react";
 import ClassCard from "~/components/cards/classCard";
 import Navbar from "~/components/navbar";
 import Footer from "~/components/footer";
-import { PageProps, usePullContent } from "~/utils/pageUtils";
+import { type PageProps, usePullContent } from "~/utils/pageUtils";
 
 interface Lecture {
   id: number;

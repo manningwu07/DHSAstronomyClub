@@ -5,7 +5,7 @@ import OpportunityCard from "~/components/cards/opportunityCard";
 import Footer from "~/components/footer";
 import Navbar from "~/components/navbar";
 import JoinSection from "~/components/sections/JoinSection";
-import { PageProps, usePullContent } from "~/utils/pageUtils";
+import { type PageProps, usePullContent } from "~/utils/pageUtils";
 
 interface Opportunity {
   imageSrc: string;

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import OpportunityCard from "../cards/opportunityCard";
-import { DataStructure } from "~/utils/dataStructure";
+import { type DataStructure } from "~/utils/dataStructure";
  
 const OpportunitiesSection = ({opportunities}: {opportunities: DataStructure["global"]["opportunities"]["featured"]}) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
